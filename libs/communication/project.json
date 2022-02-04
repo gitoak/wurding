@@ -1,0 +1,33 @@
+{
+  "root": "libs/communication",
+  "sourceRoot": "libs/communication/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/communication",
+        "main": "libs/communication/src/index.ts",
+        "tsConfig": "libs/communication/tsconfig.lib.json",
+        "assets": ["libs/communication/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/communication/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/communication"],
+      "options": {
+        "jestConfig": "libs/communication/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
