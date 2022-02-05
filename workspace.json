@@ -1,12 +1,10 @@
 {
   "version": 2,
   "projects": {
-    "communication": "libs/communication",
     "data": "libs/data",
     "mobile": "apps/mobile",
     "mobile-e2e": "apps/mobile-e2e",
     "mobile-ui": "libs/mobile-ui",
-    "server": "apps/server",
     "utils": "libs/utils",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e",

@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@wurding/communication": ["libs/communication/src/index.ts"],
       "@wurding/data": ["libs/data/src/index.ts"],
       "@wurding/mobile-ui": ["libs/mobile-ui/src/index.ts"],
       "@wurding/utils": ["libs/utils/src/index.ts"],
