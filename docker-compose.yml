@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./server:/server
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - PG_DB_HOST=postgres_main_db
+      - PG_DB_NAME=app
+      - PG_DB_USER=postgres
+      - PG_DB_PASS=supersecretpassword
+      - secret=django-insecure-hnw0*x-4w6hgy8ee7*=mpq!ze)51bh+3-q7lvkv7k=8yq9&dw4
+    depends_on:
+      - postgres_main_db
+
+  postgres_main_db:
+    image: postgres:14.1-alpine
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=supersecretpassword
+    ports:
+      - '5432:5432'
+
+volumes:
+  postgres:
