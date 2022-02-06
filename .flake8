@@ -5,6 +5,8 @@ exclude =
     env,
     manage.py,
     settings.py,
+    *.pyc
 max_complexity = 10
 max_line_length = 120
 indent_size = 2
+tab_width = 2
