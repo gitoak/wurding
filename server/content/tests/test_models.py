@@ -1,4 +1,4 @@
-from content.models import Language, Word, WordContext
+from content.models import Language, Word  # , WordContext
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
@@ -126,62 +126,62 @@ class WordTests(TestCase):
       )
 
 
-class WordContextTests(TestCase):
-  def setUp(self):
-    self.user = get_user_model().objects.create_superuser(
-        name='testsuperuser',
-        password='testsuperuser',
-    )
-    self.language = Language.objects.create_language(
-        name='English',
-        author=self.user,
-        official=True,
-    )
+# class WordContextTests(TestCase):
+#   def setUp(self):
+#     self.user = get_user_model().objects.create_superuser(
+#         name='testsuperuser',
+#         password='testsuperuser',
+#     )
+#     self.language = Language.objects.create_language(
+#         name='English',
+#         author=self.user,
+#         official=True,
+#     )
 
-  def test_create_context_successful(self):
-    """test that context gets created successful"""
-    word_context = WordContext.objects.create_word_context(
-        name='test context',
-        author=self.user,
-    )
+#   def test_create_context_successful(self):
+#     """test that context gets created successful"""
+#     word_context = WordContext.objects.create_word_context(
+#         name='test context',
+#         author=self.user,
+#     )
 
-    self.assertEqual(word_context.name, 'test context')
-    self.assertEqual(word_context.author, self.user)
+#     self.assertEqual(word_context.name, 'test context')
+#     self.assertEqual(word_context.author, self.user)
 
-  def test_create_context_noname(self):
-    """test that context gets not created with no name"""
-    with self.assertRaises(ValueError):
-      WordContext.objects.create_word_context(
-          author=self.user,
-      )
+#   def test_create_context_noname(self):
+#     """test that context gets not created with no name"""
+#     with self.assertRaises(ValueError):
+#       WordContext.objects.create_word_context(
+#           author=self.user,
+#       )
 
-  def test_create_context_noauthor(self):
-    """test that context gets not created with no author"""
-    with self.assertRaises(ValueError):
-      WordContext.objects.create_word_context(
-          name='test context',
-      )
+#   def test_create_context_noauthor(self):
+#     """test that context gets not created with no author"""
+#     with self.assertRaises(ValueError):
+#       WordContext.objects.create_word_context(
+#           name='test context',
+#       )
 
-  def test_create_context_shortname(self):
-    """test that context gets not created with short name"""
-    with self.assertRaises(ValueError):
-      WordContext.objects.create_word_context(
-          name='t',
-          author=self.user,
-      )
+#   def test_create_context_shortname(self):
+#     """test that context gets not created with short name"""
+#     with self.assertRaises(ValueError):
+#       WordContext.objects.create_word_context(
+#           name='t',
+#           author=self.user,
+#       )
 
-  def test_adding_context_to_word(self):
-    """test that context gets added to word"""
-    word = Word.objects.create_word(
-        language=self.language,
-        description='test description',
-        name='test',
-        author=self.user,
-        official=True,
-    )
-    word_context = WordContext.objects.create_word_context(
-        name='test context',
-        author=self.user,
-    )
-    word.set_context(word_context)
-    self.assertEqual(word.context, word_context)
+#   def test_adding_context_to_word(self):
+#     """test that context gets added to word"""
+#     word = Word.objects.create_word(
+#         language=self.language,
+#         description='test description',
+#         name='test',
+#         author=self.user,
+#         official=True,
+#     )
+#     word_context = WordContext.objects.create_word_context(
+#         name='test context',
+#         author=self.user,
+#     )
+#     word.set_context(word_context)
+#     self.assertEqual(word.context, word_context)

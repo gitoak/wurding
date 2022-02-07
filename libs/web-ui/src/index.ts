@@ -1,1 +1,1 @@
-export * from './lib/WebUi';
+export * from './lib/WebUi'
